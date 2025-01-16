@@ -1,0 +1,13 @@
+# Ignorar configuraciones de Eclipse
+/.settings/
+/.classpath
+/.project
+
+# Ignorar la carpeta de compilación de Maven
+/mascotas/target/
+
+# Ignorar archivos de log generados durante la ejecución
+*.log
+
+# Ignorar archivos compilados
+*.class
