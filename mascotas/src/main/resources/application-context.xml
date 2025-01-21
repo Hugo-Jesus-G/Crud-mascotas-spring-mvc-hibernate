@@ -3,8 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
@@ -17,29 +15,22 @@
 	<!-- Configuración del escáner de componentes generaliza -->
 	<context:component-scan
 		base-package="com.example" />
-
-
-	<!-- <bean id="mascotaDaoImp" class="com.example.dao.MascotaDaoImp"> <property 
-		name="sessionFactory" ref="hibernatesessionFactory" /> </bean> -->
-
-	<!-- //esto se evita usando el autowired ya qu esto lo hace por medio de 
-		un setter <bean id="mascotaService" class="com.example.service.MascotaService"> 
-		<property name="mascotaDaoI" ref="mascotaDaoImp" /> </bean> -->
+	
+		
+		<!-- 
+		<bean id="mascotaDaoImp" class="com.example.dao.MascotaDaoImp">
+		<property name="sessionFactory" ref="hibernatesessionFactory" />
+	</bean> -->
+	
+	<!-- //esto se evita usando el autowired ya qu esto lo hace por medio de un setter
+		<bean id="mascotaService" class="com.example.service.MascotaService">
+		<property name="mascotaDaoI" ref="mascotaDaoImp" />
+	</bean>
+	
+	 -->
 
 	<!-- Habilitar anotaciones de Spring MVC -->
 	<mvc:annotation-driven />
-
-	<!-- Configuración del manejador de vistas -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/vistas/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-
-	<!-- Configuración de recursos estáticos -->
-	<mvc:resources location="/recursos/"
-		mapping="/recursos/**" />
-
 
 	<!-- Configuración de la fuente de datos -->
 	<bean id="dataSource"
@@ -66,16 +57,12 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-		</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="hibernatesessionFactory"></property>
 	</bean>
 
-	<!-- Habilitar el manejo de transacciones declarativas -->
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<property name="sessionFactory" ref="hibernatesessionFactory"></property>
+	</bean>
+
 
 
 </beans>
